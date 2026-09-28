@@ -1,0 +1,9 @@
+feast[redis]==0.40.1
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pandas==2.1.4
+pyarrow==17.0.0
+scikit-learn==1.5.2
+joblib==1.4.2
+httpx==0.28.1
+pytest==8.3.4

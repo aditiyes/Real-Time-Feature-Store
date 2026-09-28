@@ -1,0 +1,9 @@
+.git
+.venv
+__pycache__
+.pytest_cache
+artifacts
+feature_repo/data/*.db
+feature_repo/data/*.parquet
+feature_repo/.runtime
+*.py[cod]

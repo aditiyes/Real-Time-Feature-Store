@@ -1,0 +1,5 @@
+project: retail_risk
+provider: local
+registry: data/registry.db
+online_store:
+  path: data/online_store.db

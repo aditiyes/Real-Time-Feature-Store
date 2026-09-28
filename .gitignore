@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+feature_repo/data/*.parquet
+feature_repo/data/*.db
+feature_repo/data/*.db-shm
+feature_repo/data/*.db-wal
+feature_repo/data/registry.db
+feature_repo/.runtime/
+artifacts/*.joblib
+artifacts/*.json
+.env

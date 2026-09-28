@@ -1,0 +1,29 @@
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+
+  app:
+    build: .
+    environment:
+      REDIS_URL: redis:6379
+    ports:
+      - "8000:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - feature-data:/srv/feature-store/feature_repo/data
+      - model-data:/srv/feature-store/artifacts
+
+volumes:
+  redis-data:
+  feature-data:
+  model-data:
