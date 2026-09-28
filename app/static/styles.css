@@ -51,9 +51,14 @@ a { color: inherit; text-decoration: none; }
 h1 { margin: 19px 0 13px; font-size: 48px; font-weight: 700; line-height: 1.08; letter-spacing: 0; }
 h1 span { color: #64823d; }
 .intro-copy > p { max-width: 445px; margin: 0; color: #69756e; font-size: 13px; line-height: 1.8; }
-.text-link { display: inline-flex; align-items: center; gap: 9px; margin-top: 19px; color: #365d37; font-size: 12px; font-weight: 800; }
-.text-link span { font-family: var(--mono); transition: transform 160ms ease; }
+.text-link { position: relative; display: inline-flex; min-height: 43px; align-items: center; gap: 17px; overflow: hidden; margin-top: 22px; border: 1px solid var(--ink); border-radius: 5px; background: var(--ink); color: #f5f6f0; padding: 0 10px 0 15px; font-size: 11px; font-weight: 800; transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
+.text-link::before { position: absolute; top: 0; bottom: 0; left: -34%; width: 22%; background: #ffffff24; content: ""; transform: skewX(-18deg); }
+.text-link span { display: grid; width: 24px; height: 24px; place-items: center; border-radius: 4px; background: var(--green); color: var(--ink); font-family: var(--mono); transition: transform 160ms ease; }
+.text-link:hover { transform: translateY(-2px); background: #263932; box-shadow: 0 5px 14px #18242124; }
+.text-link:hover::before { animation: link-sheen 620ms ease; }
 .text-link:hover span { transform: translateX(3px); }
+.text-link:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+@keyframes link-sheen { from { left: -34%; } to { left: 115%; } }
 .intro-art { position: relative; overflow: hidden; border: 1px solid #d5dbd0; border-radius: 9px; background: #e8ece2; padding: 17px 18px 13px; }
 .intro-art::after { position: absolute; top: -61px; right: -40px; width: 165px; height: 165px; border: 1px solid #cdd6c8; border-radius: 50%; content: ""; box-shadow: 0 0 0 22px #e8ece2, 0 0 0 23px #d5dbd0, 0 0 0 45px #e8ece2, 0 0 0 46px #d5dbd0; opacity: .58; pointer-events: none; }
 .art-topline, .art-foot { display: flex; align-items: center; justify-content: space-between; color: #748076; font-family: var(--mono); font-size: 9px; }
@@ -233,4 +238,5 @@ select:focus, input:focus { border-color: #779b4a; box-shadow: 0 0 0 3px #91b75d
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .text-link:hover { transform: none; }
 }

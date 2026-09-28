@@ -18,7 +18,7 @@ All example records are synthetic. The model and feature data are generated when
 Python 3.9 or newer is supported by the pinned dependencies.
 
 ```powershell
-cd $HOME\Downloads\15MLOps
+cd $HOME\Downloads\MLOps
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
@@ -72,7 +72,7 @@ For another host, run the Docker image with a reachable Redis instance and set `
 ## Project map
 
 ```text
-15MLOps/
+MLOps/
   app/main.py                  FastAPI prediction and PIT endpoints
   app/static/                  Responsive feature operations dashboard
   feature_repo/features.py     Feast entity, FeatureView, FeatureService
