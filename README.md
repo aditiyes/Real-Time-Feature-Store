@@ -65,7 +65,7 @@ Example prediction request:
 
 ## Deploy on Render
 
-The included `render.yaml` describes a Docker web service and a Redis key-value store. Push this folder to a GitHub repository, create a new Render Blueprint from that repository, and deploy the two services. Render injects the Redis connection string; the container bootstraps the Feast repo and model on startup. The health check is `/api/health`.
+The included `render.yaml` describes a Docker web service and a Redis key-value store on Render's free plans. Render injects the Redis connection string; the container bootstraps the Feast repo and model on startup. The health check is `/api/health`. Free services can sleep when idle, and free Redis is non-persistent; the app recreates its demo data and rematerializes features on startup.
 
 For another host, run the Docker image with a reachable Redis instance and set `REDIS_URL` to its connection string. Keep the online store private to the application network.
 
