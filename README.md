@@ -9,7 +9,7 @@ A portfolio-sized MLOps project built with [Feast](https://github.com/feast-dev/
 - Bootstrap creates deterministic synthetic retail activity, runs Feast registry apply and online materialization, then trains a logistic-regression baseline from Feast historical retrieval.
 - `/api/predict` reads the materialized online features before scoring. The dashboard displays the returned feature vector and prediction latency.
 - `/api/point-in-time` compares the feature vector available at an entity timestamp with the next later snapshot. Feast returns the earlier values; the later values are explicitly labeled as excluded to make leakage visible.
-- Local runs use Feast's SQLite online store. Docker Compose and the Render blueprint use Redis.
+- Local runs and Render's free single-service Blueprint use Feast's SQLite online store. Docker Compose can opt into Redis.
 
 All example records are synthetic. The model and feature data are generated when the service starts and are not checked into the repository.
 
@@ -65,7 +65,7 @@ Example prediction request:
 
 ## Deploy on Render
 
-The included `render.yaml` describes a Docker web service and a Redis key-value store on Render's free plans. Render injects the Redis connection string; the container bootstraps the Feast repo and model on startup. The health check is `/api/health`. Free services can sleep when idle, and free Redis is non-persistent; the app recreates its demo data and rematerializes features on startup.
+The included `render.yaml` deploys one Docker web service on Render's free plan using Feast's SQLite online store. No Redis service is required for this profile. The container bootstraps the Feast repo and model on startup, and `/api/health` is the health check. Free web services can sleep when idle and their local filesystem is ephemeral; the app recreates demo data and rematerializes features on startup. The Docker Compose option above uses Redis when you want the separate online-store process.
 
 For another host, run the Docker image with a reachable Redis instance and set `REDIS_URL` to its connection string. Keep the online store private to the application network.
 

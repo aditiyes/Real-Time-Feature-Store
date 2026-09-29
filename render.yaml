@@ -1,9 +1,4 @@
 services:
-  - type: keyvalue
-    name: retail-risk-features
-    plan: free
-    ipAllowList: []
-
   - type: web
     name: retail-risk-feature-store
     runtime: docker
@@ -11,9 +6,3 @@ services:
     dockerfilePath: ./Dockerfile
     dockerContext: .
     healthCheckPath: /api/health
-    envVars:
-      - key: REDIS_URL
-        fromService:
-          type: keyvalue
-          name: retail-risk-features
-          property: connectionString
